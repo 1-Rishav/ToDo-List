@@ -10,7 +10,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 /* let items=["Buy food" , "Cook Food" , "Eat Food"];
 let workItems =[]; */
-mongoose.connect("mongodb+srv://Rishav:Test-123@cluster0.ncltvf8.mongodb.net/todolistDB");
+mongoose.connect(
+  "mongodb+srv://Rishav:Test-123@cluster0.ncltvf8.mongodb.net/todolistDB"
+);
 const itemsSchema = {
   name: String,
 };
@@ -138,6 +140,6 @@ app.get("/about", function (req, res) {
   res.render("about");
 });
 
-app.listen(process.env.PORT || 2200, function () {
+app.listen(2200, function () {
   console.log("Server started on port 2200");
 });
