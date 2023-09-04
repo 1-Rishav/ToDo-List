@@ -11,7 +11,7 @@ app.use(express.static("public"));
 /* let items=["Buy food" , "Cook Food" , "Eat Food"];
 let workItems =[]; */
 mongoose.connect(
-  "mongodb+srv://Rishav:Test-123@cluster0.ncltvf8.mongodb.net/todolistDB"
+  "mongodb://127.0.0.1:27017/todolistDB"
 );
 const itemsSchema = {
   name: String,
