@@ -8,8 +8,7 @@ app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
-/* let items=["Buy food" , "Cook Food" , "Eat Food"];
-let workItems =[]; */
+
 mongoose.connect(
   "mongodb://127.0.0.1:27017/todolistDB"
 );
@@ -50,15 +49,7 @@ app.get("/", function (req, res) {
     }
   });
 
-  /* let today=new Date();
-    const options ={
-        weekday:"long",
-        day:"numeric",
-        month:"long",
-    }
-   let day=(today.toLocaleDateString("en-US", options)); */
-
-  /* console.log(day); */
+  
 });
 app.post("/", function (req, res) {
   let itemName = req.body.itemList;
@@ -68,9 +59,9 @@ app.post("/", function (req, res) {
   });
   if (listName === "Today") {
     item.save();
-    res.redirect("/");
+    res.redirect("/"); 
   } else {
-    List.findOne({ name: listName })
+    List.findOne({ name: listName }) 
       .then(function (foundList) {
         foundList.items.push(item);
         foundList.save();
@@ -117,7 +108,7 @@ app.get("/:customListName", function (req, res) {
   const customListName = _.capitalize(req.params.customListName);
   List.findOne({ name: customListName })
     .then(function (foundList) {
-      if (!foundList) {
+      if (!foundList){ 
         const list = new List({
           name: customListName,
           items: defaultItems,
